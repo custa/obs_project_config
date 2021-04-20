@@ -33,3 +33,6 @@ Order: device-mapper:systemd
 
 # /etc/profile.d/system-info.sh: line 16: free: command not found
 Required: procps-ng
+
+# /etc/profile.d/system-info.sh: line 52: /sbin/ip: No such file or directory
+Required: iproute

@@ -1,0 +1,327 @@
+Preinstall: filesystem glibc bash rpm rpm-libs
+Order: filesystem:glibc
+Order: filesystem:bash
+
+# for /usr/bin/rpmdb
+Preinstall: libcap libacl libdb bzip2 zlib xz-libs zstd lua popt openssl-libs attr
+
+# for installing stage
+Preinstall: libselinux pcre2 dbus-libs systemd-libs lz4 libgcrypt libgpg-error
+
+# installing filesystem-3.14-1.oe1
+# /bin/sh: error while loading shared libraries: libtinfo.so.6: cannot open shared object file: No such file or directory
+Order: ncurses-libs:filesystem
+
+# installing systemd-libs-243-32.oe1
+# /var/tmp/rpm-tmp.Ln7pQC: line 21: readlink: command not found
+Order: coreutils:openssl-libs
+
+# installing p11-kit-trust-0.23.20-2.oe1
+# /var/tmp/rpm-tmp.FuEdCQ: line 1: /usr/sbin/update-alternatives: No such file or directory
+Required: chkconfig
+
+# chroot: failed to run command 'su': No such file or directory
+Required: util-linux
+
+# installing systemd-243-32.oe1
+# /var/tmp/rpm-tmp.nT67PH: line 8: groupadd: command not found
+Order: audit:systemd
+
+# installing unbound-libs-1.11.0-2.oe1
+# /usr/bin/systemctl: error while loading shared libraries: libcryptsetup.so.12: cannot open shared object file: No such file or directory
+Order: device-mapper:systemd
+
+# /etc/profile.d/system-info.sh: line 16: free: command not found
+Required: procps-ng
+
+# /etc/profile.d/system-info.sh: line 52: /sbin/ip: No such file or directory
+Required: iproute
+
+# rpm: -ba: unknown option
+Required: rpm-build
+
+
+
+Ignore: acl
+Ignore: audit
+# su: error while loading shared libraries: libaudit.so.1: cannot open shared object file: No such file or directory
+#Ignore: audit-libs
+Ignore: autoconf
+Ignore: autogen
+Ignore: automake
+Ignore: babeltrace
+Ignore: basesystem
+Ignore: binutils
+Ignore: brotli
+Ignore: ca-certificates
+Ignore: chkconfig
+Ignore: chrpath
+# installing systemd-libs-243-32.oe1
+# /var/tmp/rpm-tmp.3PyVdj: line 21: readlink: command not found
+#Ignore: coreutils
+Ignore: cpio
+Ignore: cpp
+Ignore: cracklib
+Ignore: crontabs
+Ignore: crypto-policies
+Ignore: cryptsetup
+Ignore: curl
+Ignore: cyrus-sasl-lib
+Ignore: device-mapper
+Ignore: diffutils
+Ignore: e2fsprogs
+Ignore: efi-srpm-macros
+Ignore: elfutils
+Ignore: emacs-filesystem
+Ignore: expat
+Ignore: file
+Ignore: file-libs
+Ignore: findutils
+Ignore: fipscheck
+Ignore: fuse
+Ignore: fuse-help
+Ignore: gamin
+Ignore: gawk
+Ignore: gc
+Ignore: gcc
+Ignore: gcc-c++
+Ignore: gdb-headless
+Ignore: gdbm
+Ignore: gettext
+Ignore: git
+Ignore: glib2
+Ignore: glib2-help
+Ignore: glibc-common
+Ignore: glibc-devel
+Ignore: gmp
+Ignore: gnupg2
+Ignore: gnutls
+# installing systemd-libs-243-32.oe1
+# /var/tmp/rpm-tmp.xAapNl: line 6: grep: command not found
+#Ignore: grep
+Ignore: groff
+Ignore: guile
+Ignore: gzip
+Ignore: ima-evm-utils-libs
+Ignore: info
+Ignore: iproute-help
+Ignore: iptables-libs
+Ignore: json-c
+Ignore: kernel-devel
+Ignore: keyutils-libs
+Ignore: kmod-libs
+Ignore: krb5-libs
+Ignore: less
+Ignore: libarchive
+Ignore: libargon2
+Ignore: libassuan
+Ignore: libblkid
+# su: error while loading shared libraries: libcap-ng.so.0: cannot open shared object file: No such file or directory
+#Ignore: libcap-ng
+Ignore: libcurl
+Ignore: libedit
+Ignore: libev
+Ignore: libev-help
+Ignore: libevent
+Ignore: libfdisk
+Ignore: libffi
+Ignore: libgcc
+Ignore: libgomp
+Ignore: libICE
+Ignore: libidn2
+Ignore: libipt
+Ignore: libksba
+Ignore: libmetalink
+Ignore: libmnl
+Ignore: libmount
+Ignore: libmpc
+Ignore: libnetfilter_conntrack
+Ignore: libnfnetlink
+Ignore: libnghttp2
+Ignore: libnsl2
+Ignore: libpcap
+Ignore: libpipeline
+Ignore: libpng
+Ignore: libpsl
+Ignore: libpwquality
+Ignore: libseccomp
+Ignore: libsecret
+Ignore: libsemanage
+Ignore: libsepol
+Ignore: libsigsegv
+Ignore: libSM
+Ignore: libsmartcols
+Ignore: libssh
+Ignore: libssh-help
+Ignore: libstdc++
+Ignore: libstdc++-devel
+Ignore: libtasn1
+Ignore: libtirpc
+Ignore: libtool-ltdl
+Ignore: libunistring
+Ignore: libutempter
+Ignore: libuuid
+Ignore: libverto
+Ignore: libX11
+Ignore: libXau
+Ignore: libXaw
+Ignore: libxcb
+Ignore: libxcrypt
+Ignore: libxcrypt-devel
+Ignore: libXext
+Ignore: libxml2
+Ignore: libXmu
+Ignore: libXpm
+Ignore: libXt
+Ignore: logrotate
+Ignore: m4
+Ignore: make
+Ignore: man-db
+Ignore: mpfr
+Ignore: ncurses
+Ignore: ncurses-base
+# /bin/sh: error while loading shared libraries: libtinfo.so.6: cannot open shared object file: No such file or directory
+Ignore: ncurses-libs
+Required: ncurses-libs
+Ignore: nettle
+Ignore: newt
+Ignore: npth
+Ignore: openEuler-gpg-keys
+Ignore: openEuler-release
+Ignore: openEuler-repos
+Ignore: openEuler-rpm-config
+Ignore: openldap
+Ignore: openssh
+Ignore: openssh-clients
+Ignore: openssh-help
+Ignore: openssh-server
+Ignore: openssl
+Ignore: openssl-help
+Ignore: p11-kit
+Ignore: p11-kit-trust
+# su: error while loading shared libraries: libpam.so.0: cannot open shared object file: No such file or directory
+#Ignore: pam
+Ignore: patch
+# installing systemd-libs-243-32.oe1
+# grep: error while loading shared libraries: libpcre.so.1: cannot open shared object file: No such file or directory
+#Ignore: pcre
+Ignore: perl
+Ignore: perl-Algorithm-Diff
+Ignore: perl-Archive-Tar
+Ignore: perl-autodie
+Ignore: perl-B-Debug
+Ignore: perl-bignum
+Ignore: perl-Carp
+Ignore: perl-Compress-Raw-Bzip2
+Ignore: perl-Compress-Raw-Zlib
+Ignore: perl-Config-Perl-V
+Ignore: perl-constant
+Ignore: perl-CPAN-Meta
+Ignore: perl-CPAN-Meta-Requirements
+Ignore: perl-CPAN-Meta-YAML
+Ignore: perl-Data-Dumper
+Ignore: perl-DB_File
+Ignore: perl-devel
+Ignore: perl-Devel-PPPort
+Ignore: perl-Digest
+Ignore: perl-Digest-MD5
+Ignore: perl-Digest-SHA
+Ignore: perl-Encode
+Ignore: perl-Encode-devel
+Ignore: perl-Env
+Ignore: perl-Error
+Ignore: perl-experimental
+Ignore: perl-Exporter
+Ignore: perl-ExtUtils-Command
+Ignore: perl-ExtUtils-Install
+Ignore: perl-ExtUtils-MakeMaker
+Ignore: perl-ExtUtils-Manifest
+Ignore: perl-ExtUtils-ParseXS
+Ignore: perl-File-Fetch
+Ignore: perl-File-HomeDir
+Ignore: perl-File-Path
+Ignore: perl-File-Temp
+Ignore: perl-File-Which
+Ignore: perl-Filter
+Ignore: perl-Filter-Simple
+Ignore: perl-Getopt-Long
+Ignore: perl-Git
+Ignore: perl-HTTP-Tiny
+Ignore: perl-IO-Compress
+Ignore: perl-IO-Socket-IP
+Ignore: perl-IPC-Cmd
+Ignore: perl-IPC-System-Simple
+Ignore: perl-IPC-SysV
+Ignore: perl-JSON-PP
+Ignore: perl-libnet
+Ignore: perl-libs
+Ignore: perl-Locale-Codes
+Ignore: perl-Locale-Maketext
+Ignore: perl-Math-BigInt
+Ignore: perl-Math-BigInt-FastCalc
+Ignore: perl-Math-BigRat
+Ignore: perl-MIME-Base64
+Ignore: perl-Module-CoreList
+Ignore: perl-Module-Load
+Ignore: perl-Module-Load-Conditional
+Ignore: perl-Module-Metadata
+Ignore: perl-Params-Check
+Ignore: perl-parent
+Ignore: perl-PathTools
+Ignore: perl-Perl-OSType
+Ignore: perl-perlfaq
+Ignore: perl-PerlIO-via-QuotedPrint
+Ignore: perl-Pod-Checker
+Ignore: perl-Pod-Escapes
+Ignore: perl-Pod-Parser
+Ignore: perl-Pod-Perldoc
+Ignore: perl-Pod-Simple
+Ignore: perl-Pod-Usage
+Ignore: perl-podlators
+Ignore: perl-Scalar-List-Utils
+Ignore: perl-Socket
+Ignore: perl-Storable
+Ignore: perl-Sys-Syslog
+Ignore: perl-Term-ANSIColor
+Ignore: perl-Term-Cap
+Ignore: perl-TermReadKey
+Ignore: perl-Test-Harness
+Ignore: perl-Test-Simple
+Ignore: perl-Text-Balanced
+Ignore: perl-Text-Diff
+Ignore: perl-Text-ParseWords
+Ignore: perl-Text-Tabs+Wrap
+Ignore: perl-Thread-Queue
+Ignore: perl-threads
+Ignore: perl-threads-shared
+Ignore: perl-Time-HiRes
+Ignore: perl-Time-Local
+Ignore: perl-Unicode-Collate
+Ignore: perl-Unicode-Normalize
+Ignore: perl-version
+Ignore: pkgconf
+Ignore: publicsuffix-list
+Ignore: python-pip-wheel
+Ignore: python-setuptools
+Ignore: python3
+Ignore: python3-pyparsing
+Ignore: qrencode
+Ignore: qt5-srpm-macros
+Ignore: readline
+Ignore: sed
+# installing filesystem-3.14-1.oe1
+# warning: group mail does not exist - using root
+#Ignore: setup
+Ignore: shadow
+Ignore: slang
+Ignore: sqlite
+Ignore: systemd
+Ignore: systemtap-sdt-devel
+Ignore: tar
+Ignore: tcl
+Ignore: tzdata
+Ignore: unbound-libs
+Ignore: unzip
+Ignore: which
+Ignore: xz
+Ignore: zip

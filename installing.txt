@@ -225,6 +225,7 @@ perl-Unicode-Collate-1.27-2.oe1
 perl-Unicode-Normalize-1.26-419.oe1
 perl-version-8:0.99.27-1.oe1
 popt-1.18-1.oe1
+procps-ng-3.3.16-17.oe1
 publicsuffix-list-20200718-1.oe1
 python-pip-wheel-20.2.2-1.oe1
 python-setuptools-44.1.1-1.oe1

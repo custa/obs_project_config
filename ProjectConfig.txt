@@ -18,10 +18,10 @@ Order: coreutils:openssl-libs
 
 # installing p11-kit-trust-0.23.20-2.oe1
 # /var/tmp/rpm-tmp.FuEdCQ: line 1: /usr/sbin/update-alternatives: No such file or directory
-Required: chkconfig
+Support: chkconfig
 
 # chroot: failed to run command 'su': No such file or directory
-Required: util-linux
+Support: util-linux
 
 # installing systemd-243-32.oe1
 # /var/tmp/rpm-tmp.nT67PH: line 8: groupadd: command not found
@@ -32,10 +32,10 @@ Order: audit:systemd
 Order: device-mapper:systemd
 
 # /etc/profile.d/system-info.sh: line 16: free: command not found
-Required: procps-ng
+Support: procps-ng
 
 # /etc/profile.d/system-info.sh: line 52: /sbin/ip: No such file or directory
-Required: iproute
+Support: iproute
 
 # rpm: -ba: unknown option
-Required: rpm-build
+Support: rpm-build

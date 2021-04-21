@@ -1,0 +1,4 @@
+chkconfig-1.14-1.oe1
+libpng-2:1.6.37-1.oe1
+newt-0.52.21-5.oe1
+slang-2.3.2-8.oe1

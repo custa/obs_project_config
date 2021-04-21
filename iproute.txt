@@ -1,0 +1,7 @@
+iproute-5.5.0-4.oe1
+iproute-help-5.5.0-4.oe1
+iptables-libs-1.8.5-2.oe1
+libmnl-1.0.4-10.oe1
+libnetfilter_conntrack-1.0.8-1.oe1
+libnfnetlink-1.0.1-15.oe1
+libpcap-14:1.9.1-6.oe1

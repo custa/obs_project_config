@@ -18,9 +18,11 @@ Order: coreutils:openssl-libs
 
 # installing p11-kit-trust-0.23.20-2.oe1
 # /var/tmp/rpm-tmp.FuEdCQ: line 1: /usr/sbin/update-alternatives: No such file or directory
+# rpm-build -> binutils -> chkconfig
 Support: chkconfig
 
 # chroot: failed to run command 'su': No such file or directory
+# rpm-build -> git -> openssh-clients -> openssh -> util-linux
 Support: util-linux
 
 # installing systemd-243-32.oe1

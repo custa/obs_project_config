@@ -1,0 +1,206 @@
+Preinstall: filesystem glibc bash rpm rpm-libs
+Order: filesystem:glibc
+Order: filesystem:bash
+
+# for /usr/bin/rpmdb
+Preinstall: libcap libacl libdb bzip2 zlib xz-libs zstd lua popt openssl-libs attr
+
+# for installing stage
+Preinstall: libselinux pcre2 dbus-libs systemd-libs lz4 libgcrypt libgpg-error
+
+# installing filesystem-3.14-1.oe1
+# /bin/sh: error while loading shared libraries: libtinfo.so.6: cannot open shared object file: No such file or directory
+Order: ncurses-libs:filesystem
+
+# installing systemd-libs-243-32.oe1
+# /var/tmp/rpm-tmp.Ln7pQC: line 21: readlink: command not found
+# invalid -- Order: coreutils:systemd-libs
+Order: coreutils:openssl-libs
+
+# installing p11-kit-trust-0.23.20-2.oe1
+# /var/tmp/rpm-tmp.FuEdCQ: line 1: /usr/sbin/update-alternatives: No such file or directory
+# rpm-build -> binutils -> chkconfig
+Support: chkconfig
+
+# chroot: failed to run command 'su': No such file or directory
+# rpm-build -> git -> openssh-clients -> openssh -> util-linux
+Support: util-linux
+
+# installing systemd-243-32.oe1
+# /var/tmp/rpm-tmp.nT67PH: line 8: groupadd: command not found
+Order: audit:systemd
+
+# installing unbound-libs-1.11.0-2.oe1
+# /usr/bin/systemctl: error while loading shared libraries: libcryptsetup.so.12: cannot open shared object file: No such file or directory
+Order: cryptsetup:unbound-libs
+
+# installing openssh-server-8.2p1-10.oe1
+# /usr/bin/systemctl: error while loading shared libraries: libcryptsetup.so.12: cannot open shared object file: No such file or directory
+Order: cryptsetup:openssh-server
+
+#Order: device-mapper:systemd
+
+# /etc/profile.d/system-info.sh: line 16: free: command not found
+Support: procps-ng
+
+# /etc/profile.d/system-info.sh: line 52: /sbin/ip: No such file or directory
+Support: iproute
+
+# rpm: -ba: unknown option
+Support: rpm-build
+
+# not execute %check
+Support: custom_build_tool-nocheck
+
+Ignore: git
+#Ignore: gdb-headless
+
+# autoconf -> emacs-filesystem
+Ignore: emacs-filesystem
+
+
+Ignore: audit
+Ignore: basesystem
+# /usr/bin/cmake: error while loading shared libraries: libbrotlidec.so.1: cannot open shared object file: No such file or directory
+#Ignore: brotli
+Ignore: ca-certificates
+# systemd -> cryptsetup -> libpwquality/pam -> cracklib
+#Ignore: cracklib
+Ignore: crontabs
+Ignore: crypto-policies
+Ignore: curl
+# rpmbuild: error while loading shared libraries: libelf.so.1: cannot open shared object file: No such file or directory
+#Ignore: elfutils
+# /usr/bin/cmake: error while loading shared libraries: libexpat.so.1: cannot open shared object file: No such file or directory
+#Ignore: expat
+#rpmbuild: error while loading shared libraries: libmagic.so.1: cannot open shared object file: No such file or directory
+#Ignore: file-libs
+# e2fsprogs -> fuse
+#Ignore: fuse
+Ignore: fuse-help
+
+# ### ostree ###
+# libfam.so.0: cannot open shared object file: No such file or directory
+#Ignore: gamin
+
+# ./config.status: line 1141: awk: command not found
+#Ignore: gawk
+# /usr/bin/glib-compile-resources: error while loading shared libraries: libgio-2.0.so.0: cannot open shared object file: No such file or directory
+#Ignore: glib2
+Ignore: glib2-help
+#Ignore: glibc-common
+# Run Build Command(s):/usr/bin/gmake cmTC_adac7/fast && /usr/bin/gmake: error while loading shared libraries: libgmp.so.10: cannot open shared object file: No such file or directory
+#Ignore: gmp
+Ignore: gnupg2
+# + /usr/bin/gzip -dc /home/abuild/rpmbuild/SOURCES/otp-OTP-21.3.3.tar.gz
+# /var/tmp/rpm-tmp.vi4gEc: line 34: /usr/bin/gzip: No such file or directory
+#Ignore: gzip
+Ignore: ima-evm-utils-libs
+#installing libgomp-7.3.0-20210203.37.oe1
+# /var/tmp/rpm-tmp.YAqnXS: line 4: /sbin/install-info: No such file or directory
+#Ignore: info
+
+# su: cannot open session: Module is unknown
+#Ignore: keyutils-libs
+#Ignore: krb5-libs
+#Ignore: e2fsprogs
+
+Ignore: libev
+Ignore: libev-help
+
+# ### nfs-utils ###
+# libverto/unbound-libs -> libevent
+#Ignore: libevent
+
+# ### gssproxy ###
+#  configure: error: "Error: libverto is not found or lacks verto_free"
+# krb5-libs -> libverto
+#Ignore: libverto
+
+
+Ignore: man-db
+# /usr/libexec/gcc/x86_64-linux-gnu/7.3.0/cc1: error while loading shared libraries: libmpfr.so.6: cannot open shared object file: No such file or directory
+#Ignore: mpfr
+Ignore: ncurses
+Ignore: ncurses-base
+# ### ostree ###
+# libnettle.so.8: cannot open shared object file: No such file or directory
+#Ignore: nettle
+# chkconfig -> newt -> slang
+#Ignore: newt
+
+# rpm -> gnupg2 -> npth
+#Ignore: npth
+
+Ignore: openEuler-gpg-keys
+
+# ### libpsm2 ###
+# /bin/sh: /etc/os-release: No such file or directory
+#Ignore: openEuler-release
+Ignore: openEuler-repos
+# gcc: error: /usr/lib/rpm/openEuler/openEuler-hardened-cc1: No such file or directory
+#Ignore: openEuler-rpm-config
+# /usr/bin/cmake: error while loading shared libraries: libldap-2.4.so.2: cannot open shared object file: No such file or directory
+#Ignore: openldap
+
+# ### kernel ###
+# /bin/sh: openssl: command not found
+#Ignore: openssl
+Ignore: openssl-help
+
+# ### ostree ###
+# libtool: link: gcc -o /home/abuild/rpmbuild/BUILD/libostree-2020.4/tmp-introspectgv959rx9/.libs/OSTree-1.0 -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fstack-protector-strong -grecord-gcc-switches -specs=/usr/lib/rpm/openEuler/openEuler-hardened-cc1 -m64 -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection /home/abuild/rpmbuild/BUILD/libostree-2020.4/tmp-introspectgv959rx9/OSTree-1.0.o -Wl,--export-dynamic -pthread -Wl,-z -Wl,relro -Wl,-z -Wl,now -specs=/usr/lib/rpm/openEuler/openEuler-hardened-ld -Wl,--export-dynamic  -L. ./.libs/libostree-1.so -L/usr/lib64 -lgpg-error -lgpgme -llzma -lz -lcrypto -larchive -lsystemd -lcurl -lmount -lselinux -lgio-2.0 -lgobject-2.0 -lgmodule-2.0 -lglib-2.0 -pthread
+# libp11-kit.so.0: cannot open shared object file: No such file or directory
+# systemd -> gnutls -> p11-kit-trust -> p11-kit
+# python3 -> python-pip-wheel -> ca-certificates -> p11-kit-trust
+#Ignore: p11-kit
+#Ignore: p11-kit-trust
+
+#
+#
+#
+#Ignore: perl
+
+#Ignore: publicsuffix-list
+#Ignore: python-pip-wheel
+#Ignore: python-setuptools
+#Ignore: python3
+#Ignore: python3-pyparsing
+# systemd -> qrencode
+#Ignore: qrencode
+# openEuler-rpm-config -> qt5-srpm-macros
+#Ignore: qt5-srpm-macros
+# gawk: error while loading shared libraries: libreadline.so.8: cannot open shared object file: No such file or directory
+#Ignore: readline
+#Ignore: sed
+
+# ### chkconfig? ###
+#Ignore: slang
+
+# /usr/bin/ld: cannot find -lsqlite3
+#Ignore: sqlite
+# ### openvpn ###
+# configure: error: Package requirements (libsystemd-daemon) were not met
+#Ignore: systemd
+Support: systemd
+Ignore: systemtap-sdt-devel
+
+# ### brltty ###
+# /usr/bin/env: 'tclsh': No such file or directory
+# python3 -> sqlite -> tcl
+#Ignore: tcl
+
+#Ignore: tzdata
+
+# ### crypto-policies ###
+# gnutls -> unbound-libs
+#Ignore: unbound-libs
+
+# /usr/bin/unzip -qq /home/abuild/rpmbuild/SOURCES/buildnumber-maven-plugin-1.3.zip
+# /var/tmp/rpm-tmp.sqpgiy: line 33: /usr/bin/unzip: No such file or directory
+#Ignore: unzip
+# libtirpc -> krb5-libs -> e2fsprogs -> fuse -> which
+# Ignore: which
+# openEuler-rpm-config -> zip
+#Ignore: zip
+

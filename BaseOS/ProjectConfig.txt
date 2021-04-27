@@ -62,4 +62,4 @@ Support: rpm-build
 Order: cryptsetup:openssh-server
 
 # not execute %check
-Support: custom_build_tool-nocheck
+#Support: custom_build_tool-nocheck
